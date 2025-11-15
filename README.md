@@ -25,15 +25,15 @@ Key symbols:
 Architecture (Mermaid)
 ```mermaid
 graph LR
-  Client -->|HTTP| API[FastAPI<br/>src/main.py]
-  API --> Domain[Domain Models<br/>src/domain.py]
-  API --> App[Application Layer<br/>src/application.py]
-  App --> Infra[Infrastructure<br/>src/infrastructure.py]
-  Infra --> Patterns[INTENT_PATTERNS]
-  Infra --> Responses[INTENT_RESPONSES]
+  Client -->|HTTP| API["FastAPI\n(src/main.py)"]
+  API --> Domain["Domain Models\n(src/domain.py)"]
+  API --> App["Application Layer\n(src/application.py)"]
+  App --> Infra["Infrastructure\n(src/infrastructure.py)"]
+  Infra --> Patterns["INTENT_PATTERNS"]
+  Infra --> Responses["INTENT_RESPONSES"]
   App -->|uses| Patterns
   App -->|uses| Responses
-  API -->|calls| handle[handle_chat_message<br/>(detect_intent, get_reply)]
+  API -->|calls| Handle["handle_chat_message\n(detect_intent, get_reply)"]
 ```
 ER diagram:
 ```mermaid
