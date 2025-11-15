@@ -37,39 +37,37 @@ graph LR
 ```
 ER diagram:
 ```mermaid
-classDiagram
-  class ChatMessage {
-    +message: str
-  }
-  class ChatReply {
-    +reply: str
-  }
-  class Intent {
-    +name: str
-  }
-  class Pattern {
-    +regex: str
-  }
-  class Response {
-    +text: str
-  }
-  class Application {
-    +detect_intent(msg: ChatMessage) Intent
-    +get_reply(intent: Intent) Response
-  }
-  class Infrastructure {
-    +INTENT_PATTERNS: dict
-    +INTENT_RESPONSES: dict
-  }
+erDiagram
 
-  ChatMessage --> Application : input
-  Application --> Intent : detects/produces
-  Intent --> Pattern : matched by
-  Pattern --> Infrastructure : defined in
-  Intent --> Response : maps to
-  Response --> Infrastructure : defined in
-  Application --> ChatReply : constructs reply from Response
+    CHAT_MESSAGE {
+        string message
+    }
+
+    CHAT_REPLY {
+        string reply
+    }
+
+    INTENT {
+        string intent_name
+    }
+
+    PATTERN {
+        string intent_name
+        string regex
+    }
+
+    RESPONSE {
+        string intent_name
+        string reply_text
+    }
+
+    %% Relationships
+    CHAT_MESSAGE ||--|| INTENT : "detects"
+    INTENT ||--|| PATTERN : "matched by"
+    INTENT ||--|| RESPONSE : "maps to"
+    RESPONSE ||--|| CHAT_REPLY : "produces"
 ```
+
 Run locally
 1. Install dependencies from [pyproject.toml](pyproject.toml):
 ```sh
