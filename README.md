@@ -25,17 +25,18 @@ Key symbols:
 Architecture (Mermaid)
 ```mermaid
 graph LR
-  Client -->|HTTP| API[FastAPI<br/>src/main.py]
-  API --> Domain[Domain Models<br/>src/domain.py]
-  API --> App[Application Layer<br/>src/application.py]
-  App --> Infra[Infrastructure<br/>src/infrastructure.py]
+  Client -->|HTTP| API[FastAPI\nsrc/main.py]
+  API --> Domain[Domain Models\nsrc/domain.py]
+  API --> App[Application Layer\nsrc/application.py]
+  App --> Infra[Infrastructure\nsrc/infrastructure.py]
   Infra --> Patterns[INTENT_PATTERNS]
   Infra --> Responses[INTENT_RESPONSES]
   App -->|uses| Patterns
   App -->|uses| Responses
-  API -->|calls| handle[handle_chat_message<br/>(detect_intent, get_reply)]
+  API -->|calls| handle[handle_chat_message\n(detect_intent, get_reply)]
 ```
-ER diagram:
+
+Entity Relationship (Mermaid class diagram)
 ```mermaid
 classDiagram
   class ChatMessage {
@@ -70,6 +71,7 @@ classDiagram
   Response --> Infrastructure : defined in
   Application --> ChatReply : constructs reply from Response
 ```
+
 Run locally
 1. Install dependencies from [pyproject.toml](pyproject.toml):
 ```sh
